@@ -1,0 +1,37 @@
+<head>
+  <title>Ban Chi Lunch Spots</title>
+</head>
+
+<body>
+  <div id="outer">
+    {{> lunchspots}}
+  </div>
+</body>
+
+<template name="lunchspots">
+  <div class="lunchspots">
+    {{#each venues}}
+      {{> venue}}
+    {{/each}}
+  </div>
+
+  {{#if selected_name}}
+  <div class="details">
+    <div class="name">{{selected_name}}</div>
+    <input type="button" class="inc" value="Give 5 points" />
+  </div>
+  {{/if}}
+
+  {{#unless selected_name}}
+  <div class="none">Click a location to select</div>
+  {{/unless}}
+</template>
+
+<template name="venue">
+  <div class="venue_list_item {{selected}}">
+    <span class="name">{{name}}</span>
+    <span class="score">{{score}}<input type="button" class="inc" value="+5" /></span>
+    
+  </div>
+</template>
+
