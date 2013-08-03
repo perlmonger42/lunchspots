@@ -63,7 +63,7 @@ body {
 
 .venue_list_item.selected .inc {
   visibility: visible;
-  vertical-align: middle;
+  vertical-align: baseline;
 }
 
 .inc {
