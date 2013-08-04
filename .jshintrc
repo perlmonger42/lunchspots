@@ -1,0 +1,18 @@
+{
+  "undef":     true,
+  "unused":    true,
+  "curly":     true,
+  "eqeqeq":    true,
+  "forin":     true,
+  "indent":    2,
+  "latedef":   true,
+  "newcap":    true,
+  "strict":    true,
+  "trailing":  true,
+  "maxlen":    80,
+  "lastsemic": true,
+  "sub":       true,
+  "predef":    {
+    "Meteor":  false, "Template": false, "Session": false, "Random": false
+  }
+}
