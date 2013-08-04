@@ -3,22 +3,6 @@
 (function () {
   "use strict";
 
-  /* jslint and global directives cannot have space before the keyword. Ugh. */
-  /*globals Meteor, Template, Session, Random */
-  /*jslint browser: true, devel: true, nomen: true, plusplus: true */
-  /*
-   * Explanation of jslint options:
-   *   browser: true 
-   *     assume the standard browser global variables
-   *   devel: true
-   *     assume standard globals useful for development (like 'console')
-   *   nomen: true
-   *     suppresses complaints about identifiers with leading and/or
-   *     trailing underscores
-   *   plusplus: true
-   *     suppresses complaints about ++ and --
-   */
-
   // Set up a collection to contain restaurant location information.
   // On the server, it is backed by a MongoDB collection named "venues".
   var Venues = new Meteor.Collection("venues");
@@ -62,8 +46,9 @@
           random_score = Math.floor(Random.fraction() * 10) * 5;
           Venues.insert({name: names[i], score: random_score});
         }
+        i['name'] = 'Joe';
       }
     });
   }
 
-}());
+})();
