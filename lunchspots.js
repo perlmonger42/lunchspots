@@ -46,7 +46,6 @@
           random_score = Math.floor(Random.fraction() * 10) * 5;
           Venues.insert({name: names[i], score: random_score});
         }
-        i['name'] = 'Joe';
       }
     });
   }
