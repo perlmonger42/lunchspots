@@ -38,13 +38,19 @@
   if (Meteor.isServer) {
     Meteor.startup(function () {
       if (Venues.find().count() === 0) {
-        var i, random_score, names;
-        names = ["Wendy's",
-                 "Buffalo Wild Wings",
-                 "Jason's Deli"];
-        for (i = 0; i < names.length; i++) {
+        var i, random_score, venue, venues;
+        venues = [["Wendy's Old Fashioned Hamburgers", "977 N State", "Orem"],
+                 ["Buffalo Wild Wings", "92 North 1200 East", "Lehi"],
+                 ["Jason's Deli", "771 E University Pkwy", "Orem"]];
+        for (i = 0; i < venues.length; i++) {
           random_score = Math.floor(Random.fraction() * 10) * 5;
-          Venues.insert({name: names[i], score: random_score});
+          venue = venues[i];
+          Venues.insert({
+            name:    venue[0],
+            address: venue[1],
+            city:    venue[2],
+            score:   random_score
+          });
         }
       }
     });
