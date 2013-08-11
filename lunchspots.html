@@ -9,7 +9,7 @@
 </body>
 
 <template name="lunchspots">
-  <div class="lunchspots">
+  <div class="venue-list">
     {{#each venues}}
       {{> venue}}
     {{/each}}
@@ -29,9 +29,13 @@
 
 <template name="venue">
   <div class="venue_list_item {{selected}}">
-    <span class="name">{{name}}</span>
-    <span class="score">{{score}}<input type="button" class="inc" value="+5" /></span>
-    <div>{{address}}, {{city}}</div>
+    <span class="score">{{score}}</span>
+    <div class="name-and-address">
+      <span class="name">{{name}}</span>
+      <br>
+      <span class="address">{{address}}, {{city}}</span>
+    </div>
+    <span class="like"><input type="button" class="inc" value="+5" /></span>
     
   </div>
 </template>
