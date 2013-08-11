@@ -20,27 +20,46 @@ body {
     padding: 5px;
 }
 
-.venue_list_item .name {
-    display: inline-block;
-    width: 300px;
-    font-size: 1.75em;
-}
-
-.venue_list_item .score {
-    display: inline-block;
-    width: 100px;
-    text-align: right;
-    font-size: 2em;
-    font-weight: bold;
-    color: #777;
-}
-
 .venue_list_item.selected {
     background-color: yellow;
 }
 
+.name-and-address {
+    display: inline-block;
+    /* background-color: bisque; border-width: 1px; border-style: solid; */
+}
+
+.venue_list_item .name {
+    display: inline-block;
+    width: 450px;
+    font-size: 1.75em;
+    /* background-color: pink; border-width: 1px; border-style: solid; */
+}
+
+.venue_list_item .score {
+    vertical-align: top;
+    display: inline-block;
+    width: 70px;
+    text-align: right;
+    padding-right: 10px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #777;
+    /* background-color: cyan; border-width: 1px; border-style: solid; */
+}
+
 .venue_list_item.selected .score {
     color: black;
+}
+
+.venue_list_item .like {
+    vertical-align: top;
+    display: inline-block;
+    /* background-color: thistle; border-width: 1px; border-style: solid; */
+}
+
+.venue_list_item .address {
+    /* background-color: palegreen; border-width: 1px; border-style: solid; */
 }
 
 .details, .none {
