@@ -9,22 +9,14 @@
 </body>
 
 <template name="lunchspots">
+  <h1>Ban Chi Lunch Spots</h1>
   <div class="venue-list">
     {{#each venues}}
       {{> venue}}
     {{/each}}
   </div>
 
-  {{#if selected_name}}
-  <div class="details">
-    <div class="name">{{selected_name}}</div>
-    <input type="button" class="inc" value="Give 5 points" />
-  </div>
-  {{/if}}
-
-  {{#unless selected_name}}
-  <div class="none">Click a location to select</div>
-  {{/unless}}
+  {{>venueAdd}}
 </template>
 
 <template name="venue">
@@ -35,8 +27,30 @@
       <br>
       <span class="address">{{address}}, {{city}}</span>
     </div>
-    <span class="like"><input type="button" class="inc" value="+5" /></span>
-    
+    <span class="like">
+      <input type="button" class="inc" value="+1" />
+      <br>
+      <input type="button" class="dec" value="-1" />
+    </span>
   </div>
 </template>
 
+<template name="venueAdd">
+  <div class="venue-add">
+    <h1>Add a Lunch Spot</h1>
+    {{> venueAddError}}
+    <form id="venue-add-form">
+      <label for="name">Name:</label>
+      <input type="text" name="name" width=20 /><br />
+      <label for="street">Street:</label>
+      <input type="text" name="street" width=20 /><br />
+      <label for="city">City:</label>
+      <input type="text" name="city" width=20 /><br />
+      <div><input type="button" class="add" value="Add" /></div>
+    </form>
+  </div>
+</template>
+
+<template name="venueAddError">
+{{#if errorMessage}}<span class="error">{{errorMessage}}</span>{{/if}}
+</template>
