@@ -14,5 +14,6 @@
   "sub":       true,
   "predef":    {
     "Meteor":  false, "Template": false, "Session": false, "Random": false
-  }
+  },
+  "jquery":    true
 }

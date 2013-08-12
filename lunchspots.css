@@ -72,6 +72,25 @@ body {
     padding: 10px 0px;
 }
 
+.venue-add {
+    border-style: dashed none none none;
+    border-color: #ccc;
+    border-width: 4px;
+    margin: 50px 10px;
+    padding: 10px 0px;
+}
+
+label, .venue-add div {
+  display: inline-block;
+  width: 80px;
+  text-align: right;
+}
+
+.venue-add .error {
+    font-weight: bold;
+    color: #f00;
+}
+
 .none {
     color: #777;
 }
@@ -80,11 +99,20 @@ body {
   visibility: hidden;
 }
 
+.venue_list_item .dec {
+  visibility: hidden;
+}
+
 .venue_list_item.selected .inc {
   visibility: visible;
   vertical-align: baseline;
 }
 
-.inc {
+.venue_list_item.selected .dec {
+  visibility: visible;
+  vertical-align: baseline;
+}
+
+.inc, .dec {
   cursor: pointer;
 }
