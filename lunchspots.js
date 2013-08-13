@@ -30,6 +30,9 @@
       },
       'click input.add': function () {
         addVenue();
+      },
+      'click input.destroy': function () {
+        Venues.remove(Session.get("selected_venue"));
       }
     });
 

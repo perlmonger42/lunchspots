@@ -103,6 +103,11 @@ label, .venue-add div {
   visibility: hidden;
 }
 
+.venue_list_item .destroy {
+    visibility: hidden;
+    display: inline-block;
+}
+
 .venue_list_item.selected .inc {
   visibility: visible;
   vertical-align: baseline;
@@ -111,6 +116,10 @@ label, .venue-add div {
 .venue_list_item.selected .dec {
   visibility: visible;
   vertical-align: baseline;
+}
+
+.venue_list_item.selected .destroy {
+  visibility: visible;
 }
 
 .inc, .dec {
