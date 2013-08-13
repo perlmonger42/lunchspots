@@ -31,7 +31,7 @@ body {
 
 .venue_list_item .name {
     display: inline-block;
-    width: 450px;
+    width: 400px;
     font-size: 1.75em;
     /* background-color: pink; border-width: 1px; border-style: solid; */
 }
@@ -124,4 +124,9 @@ label, .venue-add div {
 
 .inc, .dec {
   cursor: pointer;
+}
+
+.top-align {
+    vertical-align: top;
+    display: inline-block;
 }
