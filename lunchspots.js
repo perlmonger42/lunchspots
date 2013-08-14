@@ -1,11 +1,6 @@
-/* vim: set autoindent tabstop=2 shiftwidth=2 expandtab: */
 
 (function () {
   "use strict";
-
-  // Set up a collection to contain restaurant location information.
-  // On the server, it is backed by a MongoDB collection named "venues".
-  var Venues = new Meteor.Collection("venues");
         
   if (Meteor.isClient) {
     Template.lunchspots.venues = function () {
@@ -74,24 +69,13 @@
   }
 
   function addVenue() {
-    var data = { }, carls = /carl[']?s\s*jr/i;
+    var data = { };
 
     Session.set("error_message", '');
 
     $.each($('#venue-add-form').serializeArray(), function() {
       data[this.name] = this.value;
     });
-
-    if (carls.test(data.name)) {
-      Session.set(
-        "error_message",
-        "Sorry, but your suggestion will not be added. " +
-        "Drew has deemed Carl's Jr to be totally unacceptable."
-      );
-      return;
-    }
-
-
 
     //do validation on data={name:"Venue Name", street:"Address", city:"City"}
 
@@ -100,17 +84,20 @@
         address: data.street,
         city:    data.city,
         score:   0
-      }, function(err) {
-        var msg = "Sorry, but we couldn't insert your data.";
-        if(!err) {
-          $('#venue-add-form')[0].reset();
-        } else {
+      }, function(err, id) {
+        var msg;
+        if (err) {
+          msg = "insert failed: " + err;
           Session.set("error_message", msg);
-          /*console.log(err);*/
+          console.log(msg);
+        } else {
+          msg = "created new record with id=" + id;
+          $('#venue-add-form')[0].reset();
+          console.log(msg);
         }
       }
     );
-
   }
 
 })();
+/* vim: set autoindent tabstop=2 shiftwidth=2 expandtab wrapmargin=76: */

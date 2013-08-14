@@ -13,7 +13,9 @@
   "lastsemic": true,
   "sub":       true,
   "predef":    {
-    "Meteor":  false, "Template": false, "Session": false, "Random": false
+    "Meteor": false, "Template": false, "Session": false, "Random": false,
+    "_": false, "console": false,
+    "Venues": true
   },
   "jquery":    true
 }
