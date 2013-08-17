@@ -17,11 +17,11 @@
     };
 
     Template.lunchspots.events({
-      'click input.inc': function () {
-        Venues.update(Session.get("selected_venue"), {$inc: {score: 1}});
-      },
-      'click input.dec': function () {
-        Venues.update(Session.get("selected_venue"), {$inc: {score: -1}});
+      'click input.rate': function (theEvent, theTemplate) {
+        var theVenue = this;
+        if (theTemplate || theVenue) { /* suppress unused var warning */ }
+        var value = parseInt(theEvent.currentTarget.value, 10);
+        rateVenue(Meteor.userId(), Session.get("selected_venue"), value);
       },
       'click input.add': function () {
         addVenue();
@@ -55,7 +55,8 @@
                   ["Five Star BBQ", "70 N Geneva Rd", "Orem"]];
         for (i = 0; i < venues.length; i++) {
           //random_score = Math.floor(Random.fraction() * 10) * 5;
-          random_score = Math.floor(Random.fraction() * 10);
+          //random_score = Math.floor(Random.fraction() * 10);
+          random_score = 0;
           venue = venues[i];
           Venues.insert({
             name:    venue[0],
@@ -66,6 +67,24 @@
         }
       }
     });
+  }
+
+  function rateVenue(userId, venueId, newRating) {
+    var delta, oldRating;
+    var r = Ratings.find({user: userId, venue: venueId}, {limit: 1}).fetch();
+    if (r.length === 0) {
+      oldRating = 0;
+      r = {user: userId, venue: venueId, value: newRating};
+      Ratings.insert({user: userId, venue: venueId, value: newRating});
+    } else {
+      r = r[0];
+      oldRating = r.value;
+      Ratings.update(r._id, {$set: {value: newRating}});
+    }
+    delta = newRating - oldRating;
+    if (delta !== 0) {
+      Venues.update(venueId, {$inc: {score: delta}});
+    }
   }
 
   function addVenue() {

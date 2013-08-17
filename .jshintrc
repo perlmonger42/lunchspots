@@ -15,7 +15,7 @@
   "predef":    {
     "Meteor": false, "Template": false, "Session": false, "Random": false,
     "_": false, "console": false,
-    "Venues": true
+    "Venues": true, "Ratings": true
   },
   "jquery":    true
 }

@@ -11,7 +11,7 @@ body {
 }
 
 #outer {
-    width: 600px;
+    width: 800px;
     margin: 0 auto;    
 }
 
@@ -95,11 +95,7 @@ label, .venue-add div {
     color: #777;
 }
 
-.venue_list_item .inc {
-  visibility: hidden;
-}
-
-.venue_list_item .dec {
+.venue_list_item .rate {
   visibility: hidden;
 }
 
@@ -108,12 +104,7 @@ label, .venue-add div {
     display: inline-block;
 }
 
-.venue_list_item.selected .inc {
-  visibility: visible;
-  vertical-align: baseline;
-}
-
-.venue_list_item.selected .dec {
+.venue_list_item.selected .rate {
   visibility: visible;
   vertical-align: baseline;
 }
@@ -122,7 +113,7 @@ label, .venue-add div {
   visibility: visible;
 }
 
-.inc, .dec {
+.rate {
   cursor: pointer;
 }
 
