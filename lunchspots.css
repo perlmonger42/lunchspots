@@ -11,7 +11,7 @@ body {
 }
 
 #outer {
-    width: 800px;
+    width: 700px;
     margin: 0 auto;    
 }
 
@@ -95,18 +95,39 @@ label, .venue-add div {
     color: #777;
 }
 
-.venue_list_item .rate {
-  visibility: hidden;
-}
-
 .venue_list_item .destroy {
+    color: red;
     visibility: hidden;
     display: inline-block;
 }
 
+/* Venue-rating buttons are invisible until their venue is selected. */
+.venue_list_item .rate {
+  visibility: hidden;
+}
+
+/* All rating buttons have the `rate` class applied to them.
+ * This CSS makes them look like buttons.  */
 .venue_list_item.selected .rate {
+  display: inline-block;
+  width: 1em;
+  text-align: center;
+  color: cyan;
+  background-color: blue;
+  border: 2px solid olive;
+  border-radius: 3px;
   visibility: visible;
-  vertical-align: baseline;
+}
+
+/* The `selectedRating` class is applied to the rating that a user has chosen
+ * for the corresponding venue. If the user hasn't yet rated the venue, or a
+ * rating is different from the score the user has given the venue, then the
+ * `newRating` class is applied instead.
+ * Since a `selectedRating` indicates the user's current rating of this venue,
+ * it is an inactive button.  Thus this CSS makes it look disabled.  */
+.venue_list_item.selected .selectedRating {
+  color: #777;
+  background-color: inherit;
 }
 
 .venue_list_item.selected .destroy {

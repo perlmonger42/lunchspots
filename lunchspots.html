@@ -23,7 +23,7 @@
 <template name="venue">
   <div class="venue_list_item {{selected}}">
     <span class="top-align">
-      <input type="button" class="destroy" value="X">
+      <span class="destroy">&#x2612;</span>
     </span>
     <span class="score">{{score}}</span>
     <div class="name-and-address">
@@ -32,12 +32,13 @@
       <span class="address">{{address}}, {{city}}</span>
     </div>
     <span class="like">
-      <input type="button" class="rate" value="-2" />
-      <input type="button" class="rate" value="-1" />
-      <input type="button" class="rate" value="0" />
-      <input type="button" class="rate" value="1" />
-      <input type="button" class="rate" value="2" />
-      <input type="button" class="rate" value="3" />
+      <span class="rate {{ratingStatus -3}}" title="Hate It">-3</span>
+      <span class="rate {{ratingStatus -2}}" title="Really Dislike It">-2</span>
+      <span class="rate {{ratingStatus -1}}" title="Dislike It">-1</span>
+      <span class="rate {{ratingStatus  0}}" title="Don't Care">0</span>
+      <span class="rate {{ratingStatus  1}}" title="Like It">1</span>
+      <span class="rate {{ratingStatus  2}}" title="Really Like It">2</span>
+      <span class="rate {{ratingStatus  3}}" title="Love It">3</span>
     </span>
   </div>
 </template>

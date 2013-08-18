@@ -16,17 +16,25 @@
       return Session.equals("selected_venue", this._id) ? "selected" : '';
     };
 
+    Template.venue.ratingStatus = function (aRating) {
+      var selected = Session.equals("selected_venue", this._id);
+      if (!selected) { return 'inactiveRating' }
+      var r = Ratings.findOne({user: Meteor.userId(), venue: this._id});
+      if (!r) { return 'newRating' }
+      return r.value === aRating ? 'selectedRating' : 'newRating';
+    };
+
     Template.lunchspots.events({
-      'click input.rate': function (theEvent, theTemplate) {
+      'click span.newRating': function (theEvent, theTemplate) {
         var theVenue = this;
         if (theTemplate || theVenue) { /* suppress unused var warning */ }
-        var value = parseInt(theEvent.currentTarget.value, 10);
+        var value = parseInt(theEvent.currentTarget.innerText, 10);
         rateVenue(Meteor.userId(), Session.get("selected_venue"), value);
       },
       'click input.add': function () {
         addVenue();
       },
-      'click input.destroy': function () {
+      'click span.destroy': function () {
         Venues.remove(Session.get("selected_venue"));
       }
     });
