@@ -3,11 +3,16 @@
 </head>
 
 <body>
-  <div style="float: left">{{loginButtons align="left"}}</div>
+  {{> controls}}
   <div id="outer">
     {{> lunchspots}}
   </div>
 </body>
+
+<template name="controls">
+  <div style="float: left">{{loginButtons align="left"}}</div>
+  <div style="float: right"><span id="recalc">Recalculate Scores</span></div>
+</template>
 
 <template name="lunchspots">
   <h1>Ban Chi Lunch Spots</h1>
@@ -25,20 +30,22 @@
     <span class="top-align">
       <span class="destroy">&#x2612;</span>
     </span>
-    <span class="score">{{score}}</span>
+    <span class="score">{{roundedScore}}</span>
     <div class="name-and-address">
       <span class="name">{{name}}</span>
       <br>
       <span class="address">{{address}}, {{city}}</span>
     </div>
     <span class="like">
-      <span class="rate {{ratingStatus -3}}" title="Hate It">-3</span>
-      <span class="rate {{ratingStatus -2}}" title="Really Dislike It">-2</span>
-      <span class="rate {{ratingStatus -1}}" title="Dislike It">-1</span>
-      <span class="rate {{ratingStatus  0}}" title="Don't Care">0</span>
-      <span class="rate {{ratingStatus  1}}" title="Like It">1</span>
-      <span class="rate {{ratingStatus  2}}" title="Really Like It">2</span>
-      <span class="rate {{ratingStatus  3}}" title="Love It">3</span>
+      <span class="rate {{ratingStatus  0}}" title="Hate It">0</span>
+      <span class="rate {{ratingStatus  2}}" title="Really Dislike It">2</span>
+      <span class="rate {{ratingStatus  4}}" title="Dislike It">4</span>
+      <span class="rate {{ratingStatus  5}}" title="Don't Care">X</span>
+      <span class="rate {{ratingStatus  6}}" title="Like It">6</span>
+      <span class="rate {{ratingStatus  8}}" title="Really Like It">8</span>
+      <span class="rate {{ratingStatus 10}}" title="Love It">10</span>
+      <br>
+      {{ratingSum}} / {{ratingCount}} = {{rawScore}} ({{roundedScore}} out of 10)
     </span>
   </div>
 </template>
@@ -62,3 +69,4 @@
 <template name="venueAddError">
 {{#if errorMessage}}<span class="error">{{errorMessage}}</span>{{/if}}
 </template>
+<!-- vim: set autoindent tabstop=2 shiftwidth=2 expandtab wrapmargin=6: -->
