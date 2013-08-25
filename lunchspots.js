@@ -21,7 +21,7 @@
     };
 
     Template.venue.rawScore = function () {
-      return computeScore(this.ratingSum, this.ratingCount);
+      return computeScore(this.ratingSum, this.ratingCount).toFixed(3);
     };
 
     Template.venue.ratingStatus = function (aRating) {
